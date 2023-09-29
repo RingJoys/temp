@@ -4,7 +4,6 @@ import torch.nn as nn
 import torch.optim as optim
 import matplotlib.pyplot as plt
 import t03_vfl as vfl
-import time
 
 '''
 # 定义线性回归模型
@@ -129,10 +128,7 @@ groups =[group1, group2, group3, group4, group5]
 fl=FederatedLearning(groups)
 # 训练每个组
 num_epochs = 10
-start_time = time.time()
 losses = fl.train(num_epochs)
-elapsed_time = time.time() - start_time
-print('elapsed_time: {:.3f}s'.format(elapsed_time))
 
 # 绘制损失曲线
 plt.plot(losses)

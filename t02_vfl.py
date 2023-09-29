@@ -10,6 +10,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.utils import shuffle, Bunch
 import random
 import multiprocessing
+import time
 
 
 class Client:
@@ -312,6 +313,7 @@ def vertical_logistic_regression(X, y, X_test, y_test, config, weight_a, weight_
 
     ## 训练
     for i in range(config['n_iter']):
+        start_time = time.time()
         client_C.task_1("A", "B")
         client_A.task_1("B")
         client_B.task_1("A")
@@ -320,6 +322,8 @@ def vertical_logistic_regression(X, y, X_test, y_test, config, weight_a, weight_
         client_C.task_2("A", "B")
         client_A.task_3()
         client_B.task_3()
+        elapsed_time = time.time() - start_time
+        print('elapsed_time: {:.3f}s'.format(elapsed_time))
     print("All process done.")
     return [client_A.weights, client_B.weights, client_C.loss[29]]
 
