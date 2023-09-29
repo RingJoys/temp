@@ -65,7 +65,7 @@ class FederatedLearning:
                 # 接下来开始聚合操作
                 sum_params = [x+(group.config['overlap'])*y for x,y in zip(sum_params, group_losses[0])]  # 这里group前面可以加上对应的权重
             #sum_weights= sum(1/x for x in epoch_losses)
-            avg_params = [item / 2000 for item in sum_params]  # 聚合之后的参数
+            avg_params = [item / 20000 for item in sum_params]  # 聚合之后的参数
             #weight_a = avg_params[8:11]
             #weight_b = avg_params[:8]
             weight_a = avg_params[0:3]
