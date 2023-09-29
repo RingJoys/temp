@@ -212,8 +212,8 @@ class ClientC(Client):
             encrypted_masked_dJ_b = dt['encrypted_masked_dJ_b']
             #masked_dJ_a = np.asarray([self.private_key.decrypt(x) for x in encrypted_masked_dJ_a])
             #masked_dJ_b = np.asarray([self.private_key.decrypt(x) for x in encrypted_masked_dJ_b])
-            masked_dJ_a = self.private_key.gpu_decrypt(encrypted_masked_dJ_a)
-            masked_dJ_b = self.private_key.gpu_decrypt(encrypted_masked_dJ_b)
+            masked_dJ_a = np.array(self.private_key.gpu_decrypt(encrypted_masked_dJ_a))
+            masked_dJ_b = np.array(self.private_key.gpu_decrypt(encrypted_masked_dJ_b))
         except Exception as e:
             print("C step 2 exception: %s" % e)
 
@@ -326,6 +326,7 @@ def vertical_logistic_regression(X, y, X_test, y_test, config, weight_a, weight_
         elapsed_time = time.time() - start_time
         print('elapsed_time: {:.3f}s'.format(elapsed_time))
     print("All process done.")
-    return [client_A.weights, client_B.weights, client_C.loss[29]]
+    #return [client_A.weights, client_B.weights, client_C.loss[config[29]]
+    return [client_A.weights, client_B.weights, client_C.loss[config['n_iter']-1]]
 
 

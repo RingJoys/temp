@@ -325,6 +325,7 @@ def vertical_logistic_regression(X, y, X_test, y_test, config, weight_a, weight_
         elapsed_time = time.time() - start_time
         print('elapsed_time: {:.3f}s'.format(elapsed_time))
     print("All process done.")
-    return [client_A.weights, client_B.weights, client_C.loss[29]]
+    #return [client_A.weights, client_B.weights, client_C.loss[config[29]]
+    return [client_A.weights, client_B.weights, client_C.loss[config['n_iter']-1]]
 
 

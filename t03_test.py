@@ -58,7 +58,7 @@ class FederatedLearning:
         weight_group=[100,60,70,80,90]
         for epoch in range(num_epochs):
             epoch_losses = []  # 用于记录每个组的损失值
-            sum_params = [0] * 11
+            sum_params = [0] * 12
             for group in self.groups:
                 group_losses = group.train(weight_a, weight_b)
                 epoch_losses.append(group_losses[1])
@@ -69,7 +69,7 @@ class FederatedLearning:
             #weight_a = avg_params[8:11]
             #weight_b = avg_params[:8]
             weight_a = avg_params[0:3]
-            weight_b = avg_params[3:11]
+            weight_b = avg_params[3:12]
             #losses.append(sum(epoch_losses) / len(epoch_losses))  # 计算平均损失值!这里需要加上权重吧
             losses.append(epoch_losses[0]*(10/40) + epoch_losses[1]*(6/40)+ epoch_losses[2]*(7/40) + epoch_losses[3]*(8/40) +epoch_losses[4]*(9/40))
             # self.aggregate()
@@ -135,4 +135,5 @@ plt.plot(losses)
 plt.xlabel('Epoch')
 plt.ylabel('Loss')
 plt.title('Training Loss')
+plt.savefig("loss.png")
 plt.show()
