@@ -129,6 +129,7 @@ fl=FederatedLearning(groups)
 # 训练每个组
 num_epochs = 10
 losses = fl.train(num_epochs)
+print(losses)
 
 # 绘制损失曲线
 plt.plot(losses)
