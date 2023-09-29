@@ -63,8 +63,8 @@ class ClientA(Client):
         z_a_square = z_a ** 2
         #encrypted_u_a = np.asarray([public_key.encrypt(x) for x in u_a])
         #encrypted_z_a_square = np.asarray([public_key.encrypt(x) for x in z_a_square])
-        encrypted_u_a = public_key.gpu_encrypt(u_a)
-        encrypted_z_a_square = public_key.gpu_encrypt(z_a_square)
+        encrypted_u_a = np.array(public_key.gpu_encrypt(u_a)）
+        encrypted_z_a_square = np.array(public_key.gpu_encrypt(z_a_square)）
         dt.update({"encrypted_u_a": encrypted_u_a})
         data_to_B = {"encrypted_u_a": encrypted_u_a, "encrypted_z_a_square": encrypted_z_a_square}
         self.send_data(data_to_B, self.other_client[client_B_name])
@@ -127,7 +127,7 @@ class ClientB(Client):
         try:
             z_b, u_b = self.compute_u_b()
             #encrypted_u_b = np.asarray([public_key.encrypt(x) for x in u_b])
-            encrypted_u_b = public_key.gpu_encrypt(u_b)
+            encrypted_u_b = np.array(public_key.gpu_encrypt(u_b))
             dt.update({"encrypted_u_b": encrypted_u_b})
             dt.update({"z_b": z_b})
         except Exception as e:
@@ -211,8 +211,8 @@ class ClientC(Client):
             encrypted_masked_dJ_b = dt['encrypted_masked_dJ_b']
             #masked_dJ_a = np.asarray([self.private_key.decrypt(x) for x in encrypted_masked_dJ_a])
             #masked_dJ_b = np.asarray([self.private_key.decrypt(x) for x in encrypted_masked_dJ_b])
-            masked_dJ_a = private_key.gpu_decrypt(encrypted_masked_dJ_a)
-            masked_dJ_b = private_key.gpu_decrypt(encrypted_masked_dJ_b)
+            masked_dJ_a = self.private_key.gpu_decrypt(encrypted_masked_dJ_a)
+            masked_dJ_b = self.private_key.gpu_decrypt(encrypted_masked_dJ_b)
         except Exception as e:
             print("C step 2 exception: %s" % e)
 
