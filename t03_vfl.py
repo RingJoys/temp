@@ -64,8 +64,8 @@ class ClientA(Client):
         z_a_square = z_a ** 2
         #encrypted_u_a = np.asarray([public_key.encrypt(x) for x in u_a])
         #encrypted_z_a_square = np.asarray([public_key.encrypt(x) for x in z_a_square])
-        encrypted_u_a = np.array(public_key.gpu_encrypt(u_a)）
-        encrypted_z_a_square = np.array(public_key.gpu_encrypt(z_a_square)）
+        encrypted_u_a = np.array(public_key.gpu_encrypt(u_a))
+        encrypted_z_a_square = np.array(public_key.gpu_encrypt(z_a_square))
         dt.update({"encrypted_u_a": encrypted_u_a})
         data_to_B = {"encrypted_u_a": encrypted_u_a, "encrypted_z_a_square": encrypted_z_a_square}
         self.send_data(data_to_B, self.other_client[client_B_name])
