@@ -80,7 +80,7 @@ if __name__ == '__main__':
     # 创建客户端和组
     # 这里先假设每个组的config是一样的
     config1 = {
-        'n_iter': 30,
+        'n_iter': 150,
         'lambda': 10,
         'lr': 0.05,
         'A_idx': [8, 9, 10],
@@ -88,7 +88,7 @@ if __name__ == '__main__':
         'overlap': 5000,
     }
     config2 = {
-        'n_iter': 30,
+        'n_iter': 150,
         'lambda': 10,
         'lr': 0.05,
         'A_idx': [8, 9, 10],
@@ -96,7 +96,7 @@ if __name__ == '__main__':
         'overlap': 3000,
     }
     config3 = {
-        'n_iter': 30,
+        'n_iter': 150,
         'lambda': 10,
         'lr': 0.05,
         'A_idx': [8, 9, 10],
@@ -104,7 +104,7 @@ if __name__ == '__main__':
         'overlap': 3500,
     }
     config4 = {
-        'n_iter': 30,
+        'n_iter': 150,
         'lambda': 10,
         'lr': 0.05,
         'A_idx': [8, 9, 10],
@@ -112,7 +112,7 @@ if __name__ == '__main__':
         'overlap': 4000,
     }
     config5 = {
-        'n_iter': 30,
+        'n_iter': 150,
         'lambda': 10,
         'lr': 0.05,
         'A_idx': [8, 9, 10],

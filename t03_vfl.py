@@ -239,7 +239,7 @@ class ClientC(Client):
 
 def load_data(subset_size):
     # Load the dataset from the CSV file
-    dataset = pd.read_csv('test.csv')
+    dataset = pd.read_csv('Churn_Modelling.csv')
 
     # Assuming that 'target' column in the CSV file contains the target labels
     # You may need to adjust this part depending on your CSV file structure
